@@ -182,7 +182,6 @@ it("Should AcceptEncryption successfully", async function () {
   const contractWithSigner1 = new ethers.Contract(contractAddress, contractAbi, signer1);
   const contractWithSigner2 = new ethers.Contract(contractAddress, contractAbi, signer2);
 
-  // Use the same Ethereum addresses as signer1 and signer2 for the others array
   const others = [await signer2.getAddress()];
 
   // Initiate encryption with the specified addresses
@@ -247,7 +246,6 @@ describe("Three / more parties Scenario :", function () {
 
     const others = [await signer2.getAddress(),signer3.getAddress()];
 
-    // Define the expected event parameters
     const id = 1;
     const parties = [ await signer1.getAddress(),await signer2.getAddress(),await signer3.getAddress()];
     const z = 1234;
@@ -337,7 +335,7 @@ it("Should AcceptEncryption successfully with 3 players", async function () {
   const contract = await YourContract.deploy();
   await contract.deployed();
 
-  // Get the first two default accounts provided by Hardhat
+  // Get the first 3 default accounts provided by Hardhat
   const signer1 = await ethers.provider.getSigner(0);
   const signer2 = await ethers.provider.getSigner(1);
   const signer3 = await ethers.provider.getSigner(2);
@@ -411,7 +409,7 @@ it("Should AcceptEncryption successfully with 3 players", async function () {
     const contract = await YourContract.deploy();
     await contract.deployed();
   
-    // Get the first two default accounts provided by Hardhat
+    // Get the first 5 default accounts provided by Hardhat
     const signer1 = await ethers.provider.getSigner(0);
     const signer2 = await ethers.provider.getSigner(1);
     const signer3 = await ethers.provider.getSigner(2);
@@ -438,9 +436,9 @@ it("Should AcceptEncryption successfully with 3 players", async function () {
   
     // Accept encryption from authorized parties
     await contractWithSigner2.AcceptEncryption(1,2345);
-     await contractWithSigner3.AcceptEncryption(1,7859);
-    // await contractWithSigner4.AcceptEncryption(1,1876);
-    // await contractWithSigner5.AcceptEncryption(1,6879);
+    await contractWithSigner3.AcceptEncryption(1,7859);
+    await contractWithSigner4.AcceptEncryption(1,1876);
+    await contractWithSigner5.AcceptEncryption(1,6879);
 
      ///////
     // Sign messages for each party :
@@ -509,7 +507,7 @@ it("Should AcceptEncryption successfully with 3 players", async function () {
       const contract = await YourContract.deploy();
       await contract.deployed();
     
-      // Get the first two default accounts provided by Hardhat
+      // Get the first 7 default accounts provided by Hardhat
       const signer1 = await ethers.provider.getSigner(0);
       const signer2 = await ethers.provider.getSigner(1);
       const signer3 = await ethers.provider.getSigner(2);
@@ -639,7 +637,6 @@ it("Should AcceptEncryption successfully with 3 players", async function () {
         // Use the same Ethereum addresses as signer1 and signer2 for the others array
         const others = [await signer2.getAddress()];
     
-        // Define the expected event parameters
         const id = 1;
         const parties = [ await signer1.getAddress(),await signer2.getAddress()];
         const z = 1234;
@@ -752,6 +749,7 @@ it("Who init the process trying to AcceptEncryption,Should revert with (Already 
       
         // Accept encryption from authorized parties
         const tx =await contractWithSigner2.AcceptEncryption(1, 2345);
+   
         const message1 = 'Final Result: 42841';
         const signature1 = await signer1.signMessage(message1);
         const { r: r1, s: s1, v: v1 } = ethers.utils.splitSignature(signature1);
@@ -799,7 +797,7 @@ it("Who init the process trying to AcceptEncryption,Should revert with (Already 
               // Initiate encryption with the specified addresses
               await contractWithSigner1.InitiateEncryption(1, others, 1234, 5678, 91011);
             
-              // Accept encryption from authorized parties
+              
               //const tx =await contractWithSigner2.AcceptEncryption(1, 2345);
 
               const message1 = 'Final Result: 42841';
@@ -867,6 +865,7 @@ it("Trying to finish with Not Authorized user(wrong signature) ,Should revert wi
                     const message3 = 'Final Result: 42841';
                     const signature3 = await signer3.signMessage(message2);
                     const { r: r3, s: s3, v: v3 } = ethers.utils.splitSignature(signature3);
+  // change v to random value to make singarture differents from provided by initiator 
                     const sig3 = { message: message3,v: 12, r: r3 , s: s3 };
             
             
@@ -897,7 +896,7 @@ it("Trying to finish with duplicate user (use same account twice in parties tryi
                           const contractWithSigner2 = new ethers.Contract(contractAddress, contractAbi, signer2);
                           const contractWithSigner3 = new ethers.Contract(contractAddress, contractAbi, signer3);
       
-                          // Use the same Ethereum addresses as signer1 and signer2 for the others array
+                          
                           const others = [await signer2.getAddress(),await signer2.getAddress(),await signer3.getAddress()];
                         
                           // Initiate encryption with the specified addresses
@@ -926,6 +925,7 @@ it("Trying to finish with duplicate user (use same account twice in parties tryi
                   
                           const coeffs = [56789, 101121,5799];
                           const rngs = [131451, 161711,89642];
+  //duplicate sig2 
                           await expect(
                             contractWithSigner2.Finish_Procces(1, coeffs, rngs, [sig1,sig2,sig2,sig3])
                           ).to.be.revertedWith("duplicate signature");
@@ -950,7 +950,7 @@ it("Trying to finish but 51% parties don't AcceptEncryption , Should revert with
       const signer7 = await ethers.provider.getSigner(6);
 
   
-      // Create a new Contract instance using the specified Signer and from address
+      // Create a new Contract instance using the specified Signer 
       const contractAddress = contract.address;
       const contractAbi = YourContract.interface.fragments;
       const contractWithSigner1 = new ethers.Contract(contractAddress, contractAbi, signer1);
@@ -973,6 +973,7 @@ it("Trying to finish but 51% parties don't AcceptEncryption , Should revert with
       // Accept encryption from authorized parties
       await contractWithSigner2.AcceptEncryption(1,2345);
       await contractWithSigner3.AcceptEncryption(1,7859);
+  //only two parties accpected .
       // await contractWithSigner4.AcceptEncryption(1,1876);
       // await contractWithSigner5.AcceptEncryption(1,6879);
       // await contractWithSigner6.AcceptEncryption(1,5269);
