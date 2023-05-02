@@ -30,11 +30,11 @@ To use the Mult smart contract, you can call its functions using the following s
 
 To run the Mult smart contract unit tests using Hardhat, follow these steps:
 
-1.Clone or download the repository to your local machine.
-2.Open a terminal window and navigate to the project directory.
-3.Run npm install to install the required dependencies.
-4.To run the unit tests, run npx hardhat test.
-5.You should see the test results in your terminal window.
+1. Clone or download the repository to your local machine.
+2. Open a terminal window and navigate to the project directory.
+3. Run npm install to install the required dependencies.
+4. To run the unit tests, run npx hardhat test.
+5. You should see the test results in your terminal window.
 
 # Contributing
 Contributions to the Mult smart contract are welcome. To contribute, you can fork the project, make your changes, and submit a pull request. Please ensure that your changes follow the coding standards and do not introduce any vulnerabilities or bugs.
@@ -45,7 +45,7 @@ It deployed to the Testnet Mumbai network. The contract's address is:
 - Network: Testnet Mumbai
 - Blockchain: Polygon
 - Contract Address: 0x06CfF43960Fc1020258Bd6CF0D70b8eBA1360b39
-- Check out t on the Mumbai Polygon Network: <a href="https://mumbai.polygonscan.com/address/     0x06CfF43960Fc1020258Bd6CF0D70b8eBA1360b39">0x06CfF43960Fc1020258Bd6CF0D70b8eBA1360b39</a>
+- Check out t on the Mumbai Polygon Network: <a href="https://mumbai.polygonscan.com/address/0x06CfF43960Fc1020258Bd6CF0D70b8eBA1360b39">0x06CfF43960Fc1020258Bd6CF0D70b8eBA1360b39</a>
 
 # Authors
 The Mult smart contract was developed by Jnbez.
