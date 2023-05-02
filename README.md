@@ -6,11 +6,11 @@
 The multi_RNG smart contract is a decentralized application (dApp) that allows multiple parties to interact and generate fair random numbers that can be used for gambling or other purposes. Using advanced cryptographic techniques, the contract ensures that each party contributes equally to the generation of the random number and that no single party can influence the outcome.
 
 # Features
-Allows one party to initiate an encryption process with a specified ID, list of parties, encryption value, lower bound, and upper bound.
-Ensures that at least half of the parties accept the encryption process before proceeding to the next step.
-Allows parties to reveal their coefficients and random numbers to the rest of the group.
-Ensures that the final result is calculated using a weighted average of the inputs from all parties.
-Provides a mechanism for withdrawing funds from the contract.
+- Allows one party to initiate an encryption process with a specified ID, list of parties, encryption value, lower bound, and upper bound.
+- Ensures that at least half of the parties accept the encryption process before proceeding to the next step.
+- Allows parties to reveal their coefficients and random numbers to the rest of the group.
+- Ensures that the final result is calculated using a weighted average of the inputs from all parties.
+- Provides a mechanism for withdrawing funds from the contract.
 
 # Usage
 
