@@ -20,7 +20,7 @@ To use the Mult smart contract, you can call its functions using the following s
 
 2.Each party have to accept the encryption process by calling AcceptEncryption with the ID of the process and their assigned encryption value. If less than half of the parties have accepted the encryption, you should wait until at least half have accepted before proceeding to the next step.
 
-3.Each party can then reveal their coefficients and random numbers by calling Finish_Procces with the ID of the process, their coefficients, random numbers, and signatures of all parties involved.
+3.Any party (Except for the initiator) can then reveal their coefficients and random numbers by calling Finish_Procces with the ID of the process, their coefficients, random numbers, and signatures of all parties involved.
 
 4.The final result is calculated using all inputs from the parties and verified to be a fair random number.
 
