@@ -1,5 +1,5 @@
 
-<img src="./test.png" alt="Example uintTest" width="900" height="500">
+<img src="./test.png" alt="Example uintTest" width="1200" height="600">
 
 
 # Multi_RNG Smart Contract
